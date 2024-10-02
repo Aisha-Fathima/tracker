@@ -48,7 +48,7 @@ export default async function Home() {
             </div>
           </SignedOut>
           <SignedIn>
-          <div className="loose-leading text-[#555555]">
+          <div className="loose-leading text-[#A1356E]">
   <h2 className="text-2xl font-semibold mb-4">ADD A NEW ACTIVITY</h2>
   
   {/* Description of activities */}

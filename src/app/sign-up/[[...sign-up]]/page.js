@@ -6,7 +6,7 @@ export default function Page() {
     <div className="flex flex-col items-center justify-center min-h-screen bg-[#FEE3E3] p-4"> {/* Changed background to light pink */}
       <div className="mb-6">
         <Image
-          src="/logo.png" // Ensure to replace with your logo path
+          src="/xoxo.png" // Ensure to replace with your logo path
           alt="Your Logo"
           width={150}
           height={50}
