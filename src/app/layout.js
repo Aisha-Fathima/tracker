@@ -31,7 +31,7 @@ function Header() {
       <div>
         <div className="column2 flex-1 text-white flex justify-end">
           <SignedOut>
-            <Link href="/sign-in" className="text-[#4C9085] hover:text-[#FF4F00]"> {/* Updated Link Color */}
+            <Link href="/sign-in" className="text-[#E4B8D4] hover:text-[#FF4F00]"> {/* Updated Link Color */}
               Sign In
             </Link>
           </SignedOut>
