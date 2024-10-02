@@ -1,13 +1,10 @@
+// middleware.js
 import { authMiddleware } from "@clerk/nextjs";
 
 export default authMiddleware({
-  publicRoutes: ["/"]
+  publicRoutes: ["/", "/public-page"], // Add public routes if any
 });
 
 export const config = {
-  matcher: [
-    "/((?!.+\\.[\\w]+$|_next).*)",
-    "/",
-    "/(api|trpc)(.*)"
-  ]
+  matcher: ["/((?!.*\\..*|_next).*)"], // This ensures middleware applies to all routes
 };

@@ -44,7 +44,17 @@ body {
 }
 
 .bg-image {
-  background-image: url("/background.png");
+  background-image: url("/WhatsApp Image 2024-10-02 at 15.00.28_354b7c9a.jpg");
   background-size: cover;
   background-position: center;
+}
+
+.tooltip {
+  position: absolute;
+  background: #f8f9fa; /* Light background for the tooltip */
+  color: #333; /* Dark text color */
+  border: 1px solid #ccc; /* Light border */
+  padding: 8px;
+  border-radius: 4px;
+  z-index: 10; /* Ensure it's on top of other elements */
 }

@@ -1,6 +1,6 @@
 export function StriveBox({ total }) {
   return (
-    <div className="w-64 h-64 bg-swirl-orange rounded-lg shadow-lg p-4 text-white">
+    <div className="w-64 h-64 bg-pink-300 rounded-lg shadow-lg p-4 text-white">
       <p className="text-2xl">Strivin'</p>
       <p className="text-6xl text-center leading-loose">
         {total}

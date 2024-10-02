@@ -9,10 +9,16 @@ const addActivity = async (data) => {
   const title = data.get("title");
   const category = data.get("category");
   const length = data.get("length");
+  console.log("Adding activity:", { title, category, length }); // Log the data being added
+
   const supabase = createServerActionClient({ cookies });
-  await supabase
+  const { error } = await supabase
     .from("activities")
     .insert({ id: uuidv4(), title, category, length });
+
+  if (error) {
+    console.error("Error adding activity:", error); // Log any errors
+  }
   revalidatePath("/");
 };
 

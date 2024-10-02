@@ -13,13 +13,13 @@ import Image from "next/image";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Balanced Citizen",
+  title: "EmpowHER Balanced",
   description: "For Impressive Members of Society"
 };
 
 function Header() {
   return (
-    <header className="header flex p-4 bg-header-blue">
+    <header className="header flex p-4 bg-[#A1356E]"> {/* Updated Header Background */}
       <div className="column1 flex-1 text-white">
         <Image
           alt="balanced citizen logo"
@@ -31,7 +31,9 @@ function Header() {
       <div>
         <div className="column2 flex-1 text-white flex justify-end">
           <SignedOut>
-            <Link href="/sign-in">Sign In</Link>
+            <Link href="/sign-in" className="text-[#4C9085] hover:text-[#FF4F00]"> {/* Updated Link Color */}
+              Sign In
+            </Link>
           </SignedOut>
           <SignedIn>
             <UserButton afterSignOutUrl="/" />
