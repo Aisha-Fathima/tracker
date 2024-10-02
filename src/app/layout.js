@@ -23,7 +23,7 @@ function Header() {
       <div className="column1 flex-1 text-white">
         <Image
           alt="balanced citizen logo"
-          src="/logo.jpg"
+          src="/xoxo.png"
           width={100}
           height={100}
         />
