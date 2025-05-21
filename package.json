@@ -12,11 +12,7 @@
     "@clerk/nextjs": "^4.31.5",
     "@supabase/auth-helpers-nextjs": "^0.8.1",
     "@supabase/supabase-js": "^2.38.0",
-<<<<<<< HEAD
     "next": "^13.5.7",
-=======
-    "next": "^13.5.11",
->>>>>>> afe1fab (Corrected code for server side error)
     "react": "^18",
     "react-dom": "^18",
     "uuid": "^9.0.1"

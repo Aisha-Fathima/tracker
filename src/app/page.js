@@ -15,13 +15,12 @@ export default async function Home() {
 
   function calculateTotal(category) {
     if (!Array.isArray(activities)) {
-      return 0;
+        return 0;
     }
-
     return activities
-      .filter((activity) => activity.category === category)
-      .reduce((a, c) => a + (c.length || 0), 0);
-  }
+        .filter((activity) => activity.category === category)
+        .reduce((a, c) => a + (c.length || 0), 0);
+}
 
   const strive = calculateTotal("strivin");
   const work = calculateTotal("workin");
@@ -51,31 +50,32 @@ export default async function Home() {
               </p>
             </div>
           </SignedOut>
-
           <SignedIn>
-            <div className="loose-leading text-[#A1356E]">
-              <h2 className="text-2xl font-semibold mb-4">ADD A NEW ACTIVITY</h2>
-              <p className="mb-4 text-sm text-[#777777]">
-                Choose an activity that reflects how you're using your time. Whether it's work, self-improvement, or leisure<br />
-                Tracking your activities helps you maintain balance and focus on your goals.
-              </p>
+          <div className="loose-leading text-[#A1356E]">
+  <h2 className="text-2xl font-semibold mb-4">ADD A NEW ACTIVITY</h2>
+  
+  {/* Description of activities */}
+  <p className="mb-4 text-sm text-[#777777]">
+    Choose an activity that reflects how you're using your time. Whether it's work, self-improvement, or leisure<br></br>Tracking your activities helps you maintain balance and focus on your goals.
+  </p>
+  
+  <div className="flex justify-between items-start space-x-4"> {/* Adjusted flex properties */}
+    <Form />
+    <div className="flex-col flex-1 text-right">
+      <p className="mb-2">hours used: {total}</p> {/* Added margin for spacing */}
+      <p>hours left: {hoursLeft}</p>
+    </div>
+  </div>
+</div>
 
-              <div className="flex justify-between items-start space-x-4">
-                <Form />
-                <div className="flex-col flex-1 text-right">
-                  <p className="mb-2">hours used: {total}</p>
-                  <p>hours left: {hoursLeft}</p>
-                </div>
-              </div>
-            </div>
 
-            <div className="flex space-x-6 mt-6">
+
+            <div className="flex space-x-6">
               <WorkBox className="flex-1" total={work} />
               <StriveBox className="flex-1" total={strive} />
               <ThriveBox className="flex-1" total={thrive} />
             </div>
-
-            <BalanceBoard activities={activities || []} />
+            <BalanceBoard activities={activities} />
           </SignedIn>
         </div>
       </main>
