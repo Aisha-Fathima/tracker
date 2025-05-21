@@ -1,5 +1,5 @@
 <p align="center">
-<img src="/public/balanced-citizen-logo.png" width="300" alt="logo"/>
+Hey
 </p>
 
 # Balanced Citizen
