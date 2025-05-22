@@ -88,7 +88,7 @@ export default async function Home() {
               <ThriveBox className="flex-1" total={thrive} />
             </div>
             
-            <BalanceBoard activities={activities || []} />
+            <BalanceBoard activities={activities} />
           </div>
         </SignedIn>
       </div>
