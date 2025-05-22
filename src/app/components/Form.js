@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 export default function Form() {
   const ref = useRef(null);
   const [tooltip, setTooltip] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleMouseEnter = (category) => {
     switch (category) {
@@ -23,52 +24,89 @@ export default function Form() {
     }
   };
 
+  const handleSubmit = async (formData) => {
+    try {
+      setIsSubmitting(true);
+      await addActivity(formData);
+      ref.current?.reset();
+      setTooltip("");
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <form
-      action={async (formData) => {
-        await addActivity(formData);
-        ref.current.reset();
-        setTooltip(""); // Clear tooltip after submission
-      }}
+      action={handleSubmit}
       className="bg-inherit p-4"
       ref={ref}
     >
       <input
         name="title"
         type="text"
-        className="border border-[#EAB8E4] rounded px-3 py-2 mb-6 focus:border-[#F08080] focus:ring focus:ring-[#F08080] transition"
+        required
+        className="border border-[#EAB8E4] rounded px-3 py-2 mb-6 w-full focus:border-[#F08080] focus:ring focus:ring-[#F08080] transition"
         placeholder="Title"
       />
-      <br></br>
+      
       <select
         name="category"
-        htmlFor="category"
-        className="border border-[#EAB8E4] rounded px-3 py-2 mb-6 focus:border-[#F08080] focus:ring focus:ring-[#F08080] transition"
-        onMouseLeave={() => setTooltip("")} // Clear tooltip on mouse leave
+        required
+        defaultValue=""
+        className="border border-[#EAB8E4] rounded px-3 py-2 mb-6 w-full focus:border-[#F08080] focus:ring focus:ring-[#F08080] transition"
+        onMouseLeave={() => setTooltip("")}
       >
-        <option value="" disabled defaultValue>
+        <option value="" disabled>
           Select Category
         </option>
-        <option value="workin" onMouseEnter={() => handleMouseEnter("workin")}>Workin'</option>
-        <option value="strivin" onMouseEnter={() => handleMouseEnter("strivin")}>Strivin'</option>
-        <option value="thrivin" onMouseEnter={() => handleMouseEnter("thrivin")}>Thrivin'</option>
+        <option 
+          value="workin" 
+          onMouseEnter={() => handleMouseEnter("workin")}
+        >
+          Workin'
+        </option>
+        <option 
+          value="strivin" 
+          onMouseEnter={() => handleMouseEnter("strivin")}
+        >
+          Strivin'
+        </option>
+        <option 
+          value="thrivin" 
+          onMouseEnter={() => handleMouseEnter("thrivin")}
+        >
+          Thrivin'
+        </option>
       </select>
-      <br></br>
+      
       <input
         name="length"
         type="number"
-        className="border border-[#EAB8E4] rounded px-3 py-2 mb-6 focus:border-[#F08080] focus:ring focus:ring-[#F08080] transition"
-        placeholder="1"
+        min="1"
+        max="24"
+        required
+        className="border border-[#EAB8E4] rounded px-3 py-2 mb-6 w-full focus:border-[#F08080] focus:ring focus:ring-[#F08080] transition"
+        placeholder="Hours (1-24)"
       />
-      <br></br>
+      
       <button
         type="submit"
-        className="bg-[#A1356E] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:bg-[#D5006D]"
+        disabled={isSubmitting}
+        className={`w-full font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition ${
+          isSubmitting 
+            ? "bg-gray-400 text-gray-600 cursor-not-allowed" 
+            : "bg-[#A1356E] text-white hover:bg-[#D5006D]"
+        }`}
       >
-        Submit
+        {isSubmitting ? "Submitting..." : "Submit"}
       </button>
+      
       {tooltip && (
-        <div className="mt-2 text-sm text-gray-600">{tooltip}</div> // Tooltip display
+        <div className="mt-2 p-2 text-sm text-gray-600 bg-gray-50 rounded border">
+          {tooltip}
+        </div>
       )}
     </form>
   );

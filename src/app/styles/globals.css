@@ -47,14 +47,36 @@ body {
   background-image: url("/WhatsApp Image 2024-10-02 at 15.00.28_354b7c9a.jpg");
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .tooltip {
   position: absolute;
-  background: #f8f9fa; /* Light background for the tooltip */
-  color: #333; /* Dark text color */
-  border: 1px solid #ccc; /* Light border */
+  background: #f8f9fa;
+  color: #333;
+  border: 1px solid #ccc;
   padding: 8px;
   border-radius: 4px;
-  z-index: 10; /* Ensure it's on top of other elements */
+  z-index: 10;
+}
+
+/* Ensure consistent styling for loading states */
+.clerk-loading {
+  color: rgb(var(--foreground-rgb));
+}
+
+/* Preload optimization - ensure critical styles are immediately available */
+.main-content-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
